@@ -1,0 +1,6 @@
+H:\Документы\Visual Studio 2015\Projects\snake\consoleSnake\bin\Debug\consoleSnake.exe.config
+H:\Документы\Visual Studio 2015\Projects\snake\consoleSnake\bin\Debug\consoleSnake.exe
+H:\Документы\Visual Studio 2015\Projects\snake\consoleSnake\bin\Debug\consoleSnake.pdb
+H:\Документы\Visual Studio 2015\Projects\snake\consoleSnake\obj\Debug\consoleSnake.csprojResolveAssemblyReference.cache
+H:\Документы\Visual Studio 2015\Projects\snake\consoleSnake\obj\Debug\consoleSnake.exe
+H:\Документы\Visual Studio 2015\Projects\snake\consoleSnake\obj\Debug\consoleSnake.pdb

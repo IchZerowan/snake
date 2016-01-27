@@ -1,0 +1,8 @@
+H:\Документы\Visual Studio 2015\Projects\snake\consoleSnake\bin\Release\consoleSnake.exe.config
+H:\Документы\Visual Studio 2015\Projects\snake\consoleSnake\bin\Release\consoleSnake.exe
+H:\Документы\Visual Studio 2015\Projects\snake\consoleSnake\bin\Release\consoleSnake.pdb
+H:\Документы\Visual Studio 2015\Projects\snake\consoleSnake\obj\Release\consoleSnake.exe
+H:\Документы\Visual Studio 2015\Projects\snake\consoleSnake\obj\Release\consoleSnake.pdb
+H:\Документы\Visual Studio 2015\Projects\snake\consoleSnake\snake.git\bin\Release\consoleSnake.exe.config
+H:\Документы\Visual Studio 2015\Projects\snake\consoleSnake\snake.git\obj\Release\consoleSnake.exe
+H:\Документы\Visual Studio 2015\Projects\snake\consoleSnake\snake.git\obj\Release\consoleSnake.pdb
