@@ -12,11 +12,11 @@ namespace consoleSnake
         int y;
         char s;
 
-        public point(int _x, int _y, char _s)
+        public point(int x, int y, int s)
         {
-            x = _x;
-            y = _y;
-            s = _s;
+            this.x = x;
+            this.y = y;
+            SetChar(s);
         }
 
         public point(point p)
@@ -28,8 +28,18 @@ namespace consoleSnake
 
         public void Draw()
         {
-            Console.SetCursorPosition(x, y);
+            try {
+                Console.SetCursorPosition(x, y);
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                return;
+            }
+            if (s == '*')
+                Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write(s);
+            if (s == '*')
+                Console.ForegroundColor = ConsoleColor.Gray;
         }
 
         public void move(int i, direction dir)
@@ -55,10 +65,22 @@ namespace consoleSnake
             return p.x == this.x && p.y == this.y;
         }
 
-        public void ChangeChar(char NewChar)
+        public void ChangeChar(int NewChar)
         {
-            s = NewChar;
+            SetChar(NewChar);
             Draw();
+        }
+
+        void SetChar(int Char)
+        {
+            if (Char == 1)
+                this.s = '+';
+            if (Char == 2)
+                this.s = '$';
+            if (Char == 3)
+                this.s = '*';
+            if (Char == 4)
+                this.s = '=';
         }
     }
 }

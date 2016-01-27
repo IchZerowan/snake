@@ -9,7 +9,7 @@ namespace consoleSnake
     class line_horizontal : figure
     {
 
-        public line_horizontal(int xl, int xr, int y, char s)
+        public line_horizontal(int xl, int xr, int y, int s)
         {
             pList = new List<point>();
             for (int x = xl; x <= xr; x++)
