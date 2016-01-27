@@ -60,5 +60,7 @@ namespace consoleSnake
             s = NewChar;
             Draw();
         }
+
+
     }
 }
