@@ -56,13 +56,13 @@ namespace consoleSnake
 
         public void HandleSnake(ConsoleKey key)
         {
-            if (key == ConsoleKey.RightArrow)
+            if (key == ConsoleKey.RightArrow && Direction != direction.LEFT)
                 Direction = direction.RIGHT;
-            else if (key == ConsoleKey.LeftArrow)
+            else if (key == ConsoleKey.LeftArrow && Direction != direction.RIGHT)
                 Direction = direction.LEFT;
-            else if (key == ConsoleKey.UpArrow)
+            else if (key == ConsoleKey.UpArrow && Direction != direction.DOWN)
                 Direction = direction.UP;
-            else if (key == ConsoleKey.DownArrow)
+            else if (key == ConsoleKey.DownArrow && Direction != direction.UP)
                 Direction = direction.DOWN;
         }
 
