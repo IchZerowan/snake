@@ -9,6 +9,7 @@ namespace consoleSnake
     class snake : figure
     {
         direction Direction;
+        private int score;
 
         public snake(point pos, int length, direction dir)
         {
@@ -21,6 +22,7 @@ namespace consoleSnake
                 pList.Add(p);
             }
             Draw();
+            score = 0;
         }
 
         public void Move()
@@ -54,15 +56,15 @@ namespace consoleSnake
             return NextPoint;
         }
 
-        public void HandleSnake(ConsoleKey key)
+        public void HandleSnake(ctrl key)
         {
-            if (key == ConsoleKey.RightArrow)
+            if (key == ctrl.RightArrow && Direction != direction.LEFT)
                 Direction = direction.RIGHT;
-            else if (key == ConsoleKey.LeftArrow)
+            else if (key == ctrl.LeftArrow && Direction != direction.RIGHT)
                 Direction = direction.LEFT;
-            else if (key == ConsoleKey.UpArrow)
+            else if (key == ctrl.UpArrow && Direction != direction.DOWN)
                 Direction = direction.UP;
-            else if (key == ConsoleKey.DownArrow)
+            else if (key == ctrl.DownArrow && Direction != direction.UP)
                 Direction = direction.DOWN;
         }
 
@@ -71,8 +73,9 @@ namespace consoleSnake
             point head = NextPoint();
             if (head.isHit(food))
             {
-                food.ChangeChar('*');
+                food.ChangeChar(3);
                 pList.Add(food);
+                score++;
                 return true;
             }
             else
@@ -84,6 +87,11 @@ namespace consoleSnake
             Console.ForegroundColor = ConsoleColor.Yellow;
             base.Draw();
             Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public int GetScore()
+        {
+            return score;
         }
     }
 }

@@ -10,15 +10,15 @@ namespace consoleSnake
     {
         int whidth;
         int height;
-        char s;
+        int s;
 
         Random rnd = new Random();
 
-        public foodpoint(int _width, int _height, char _s)
+        public foodpoint(int width, int height, int s)
         {
-            whidth = _width;
-            height = _height;
-            s = _s;
+            whidth = width;
+            this.height = height;
+            this.s = s;
         }
 
         public point next()

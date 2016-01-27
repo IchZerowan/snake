@@ -8,7 +8,7 @@ namespace consoleSnake
 {
     class line_vertical : figure
     {
-        public line_vertical(int yu, int yd, int x, char s)
+        public line_vertical(int yu, int yd, int x, int s)
         {
             pList = new List<point>();
             for (int y = yu; y <= yd; y++)

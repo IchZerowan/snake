@@ -13,10 +13,10 @@ namespace consoleSnake
         public walls(int whidth, int height)
         {
             wallList = new List<figure>();
-            line_horizontal wall1 = new line_horizontal(1, whidth - 2, 0, '+');
-            line_horizontal wall2 = new line_horizontal(1, whidth - 2, height - 1, '+');
-            line_vertical wall3 = new line_vertical(1, height - 2, 0, '+');
-            line_vertical wall4 = new line_vertical(1, height - 2, whidth - 1, '+');
+            line_horizontal wall1 = new line_horizontal(1, whidth - 2, 0, 1);
+            line_horizontal wall2 = new line_horizontal(1, whidth - 2, height - 1, 1);
+            line_vertical wall3 = new line_vertical(1, height - 2, 0, 1);
+            line_vertical wall4 = new line_vertical(1, height - 2, whidth - 1, 1);
 
             wallList.Add(wall1);
             wallList.Add(wall2);
