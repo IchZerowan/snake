@@ -48,8 +48,6 @@ namespace consoleSnake
         {
             while (true)
             {
-
-
                 if (wall.IsHeat(Snake) || Snake.IsHeatTail())
                 {
                     break;

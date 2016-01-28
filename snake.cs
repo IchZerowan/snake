@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace consoleSnake
@@ -73,8 +74,8 @@ namespace consoleSnake
             point head = NextPoint();
             if (head.isHit(food))
             {
-                food.ChangeChar(3);
                 pList.Add(food);
+                food.ChangeChar(3);    
                 score++;
                 return true;
             }

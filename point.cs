@@ -33,7 +33,8 @@ namespace consoleSnake
             }
             catch (ArgumentOutOfRangeException e)
             {
-                return;
+                Console.SetCursorPosition(0,0);
+                Console.Write(e.ToString());
             }
             if (s == '*')
                 Console.ForegroundColor = ConsoleColor.Yellow;
