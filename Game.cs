@@ -40,7 +40,7 @@ namespace consoleSnake
             pos = new point(10, 10, 3);
             Snake = new snake(pos, 4, direction.RIGHT);
             fp = new foodpoint(width, height, 2);
-            food = fp.next();
+            food = fp.next(Snake);
             food.Draw();
         }
 
@@ -55,7 +55,7 @@ namespace consoleSnake
 
                 if (Snake.eat(food))
                 {
-                    food = fp.next();
+                    food = fp.next(Snake);
                     food.Draw();
                 }
                 else
@@ -81,7 +81,7 @@ namespace consoleSnake
                 }
                 else if (CtrlRes == ctrl.Insert)
                 {
-                    food = fp.next();
+                    food = fp.next(Snake);
                     food.Draw();
                 }
                 else

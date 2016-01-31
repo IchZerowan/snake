@@ -21,11 +21,18 @@ namespace consoleSnake
             this.s = s;
         }
 
-        public point next()
+        public point next(snake Snake)
         {
-            int x = rnd.Next(1, whidth - 1);
-            int y = rnd.Next(1, height - 1);
-            return new point(x, y, s);
+            int x;
+            int y;
+            point p;
+            do
+            {
+                x = rnd.Next(1, whidth - 1);
+                y = rnd.Next(1, height - 1);
+                p = new point(x, y, s);
+            } while (Snake.IsHeat(p));
+            return p;
         }
     }
 }
