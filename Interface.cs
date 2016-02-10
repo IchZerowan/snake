@@ -15,6 +15,8 @@ namespace consoleSnake
         {
             Console.SetWindowSize(width, height);
             Console.SetBufferSize(width, height);
+            Console.Title = "Snake";
+            Console.CursorVisible = false;
             bool CanClose;
 
             do
