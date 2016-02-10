@@ -35,7 +35,7 @@ namespace consoleSnake
             else if (speed == 5)
                 delay = 25;
             this.speed = speed;
-            pos = new point(10, 10, 3);
+            pos = new point(11, 11, 3);
         }
 
         bool play(int lvl)
@@ -90,7 +90,7 @@ namespace consoleSnake
 
         public int Start()
         {
-            for (int i = 1; i < 3; i++)
+            for (int i = 1; i < 4; i++)
             {
                 Console.Clear();
                 Console.SetCursorPosition(width / 2 - 5, height / 2);
