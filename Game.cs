@@ -90,7 +90,7 @@ namespace consoleSnake
 
         public int Start()
         {
-            for (int i = 1; i < 4; i++)
+            for (int i = 1; i < 5; i++)
             {
                 Console.Clear();
                 Console.SetCursorPosition(width / 2 - 5, height / 2);
