@@ -54,6 +54,8 @@ namespace consoleSnake
 
                 if (Snake.eat(food))
                 {
+                    Console.SetCursorPosition(5, height + 3);
+                    Console.Write(Snake.GetScore() * speed);
                     food = fp.next(Snake, wall);
                     food.Draw();
                 }
@@ -94,10 +96,14 @@ namespace consoleSnake
             {
                 Console.Clear();
                 Console.SetCursorPosition(width / 2 - 5, height / 2);
-                Console.Write("Игра начинается...");
+                Console.Write("Уровень " + i.ToString());
                 Thread.Sleep(1000);
                 Console.Clear();
+                Console.SetCursorPosition(3, height + 2);
+                Console.Write("Счет:");
                 Snake = new snake(pos, 4, direction.RIGHT);
+                Console.SetCursorPosition(5, height + 3);
+                Console.Write(Snake.GetScore() * speed);
                 wall = new walls(width, height, i);
                 fp = new foodpoint(width, height, 2);
                 food = fp.next(Snake, wall);

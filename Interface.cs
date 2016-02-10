@@ -1,8 +1,10 @@
-﻿using System;
+﻿using ConsoleExtender;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace consoleSnake
 {
@@ -13,10 +15,12 @@ namespace consoleSnake
 
         static void Main(string[] args)
         {
-            Console.SetWindowSize(width, height);
-            Console.SetBufferSize(width, height);
+            ConsoleHelper.SetConsoleFont(3);
+            Console.SetWindowSize(width, height + 5);
+            Console.SetBufferSize(width, height + 5);
             Console.Title = "Snake";
             Console.CursorVisible = false;
+            
             bool CanClose;
 
             do
