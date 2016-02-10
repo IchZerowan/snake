@@ -101,6 +101,10 @@ namespace consoleSnake
                 Console.Clear();
                 Console.SetCursorPosition(3, height + 2);
                 Console.Write("Счет:");
+                Console.SetCursorPosition(10, height + 2);
+                Console.Write("Уровень:");
+                Console.SetCursorPosition(13, height + 3);
+                Console.Write(i);
                 Snake = new snake(pos, 4, direction.RIGHT);
                 Console.SetCursorPosition(5, height + 3);
                 Console.Write(Snake.GetScore() * speed);
