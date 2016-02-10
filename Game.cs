@@ -35,27 +35,26 @@ namespace consoleSnake
             else if (speed == 5)
                 delay = 25;
             this.speed = speed;
-
-            wall = new walls(width, height);
             pos = new point(10, 10, 3);
-            Snake = new snake(pos, 4, direction.RIGHT);
-            fp = new foodpoint(width, height, 2);
-            food = fp.next(Snake);
-            food.Draw();
         }
 
-        public int Start()
+        bool play(int lvl)
         {
             while (true)
             {
+                wall.Draw();
+
+                if (Snake.GetScore() == 10 * lvl)
+                    return true;
+
                 if (wall.IsHeat(Snake) || Snake.IsHeatTail())
                 {
-                    break;
+                    return false;
                 }
 
                 if (Snake.eat(food))
                 {
-                    food = fp.next(Snake);
+                    food = fp.next(Snake, wall);
                     food.Draw();
                 }
                 else
@@ -77,17 +76,38 @@ namespace consoleSnake
                 }
                 else if (CtrlRes == ctrl.Escape)
                 {
-                    break;
+                    return false;
                 }
                 else if (CtrlRes == ctrl.Insert)
                 {
-                    food = fp.next(Snake);
+                    food = fp.next(Snake, wall);
                     food.Draw();
                 }
                 else
                     Snake.HandleSnake(CtrlRes);
             }
-            return Snake.GetScore() * speed;
+        }
+
+        public int Start()
+        {
+            for (int i = 1; i < 3; i++)
+            {
+                Console.Clear();
+                Console.SetCursorPosition(width / 2 - 5, height / 2);
+                Console.Write("Игра начинается...");
+                Thread.Sleep(1000);
+                Console.Clear();
+                Snake = new snake(pos, 4, direction.RIGHT);
+                wall = new walls(width, height, i);
+                fp = new foodpoint(width, height, 2);
+                food = fp.next(Snake, wall);
+                food.Draw();
+                if (!play(i))
+                    break;
+            }
+            int sc = Snake.GetScore() * speed;
+            Snake.ResetScore();
+            return sc;
         }
     }
 }

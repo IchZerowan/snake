@@ -28,18 +28,21 @@ namespace consoleSnake
 
         public void Draw()
         {
-            try {
+            try
+            {
                 Console.SetCursorPosition(x, y);
             }
             catch (ArgumentOutOfRangeException e)
             {
-                Console.SetCursorPosition(0,0);
+                Console.SetCursorPosition(0, 0);
                 Console.Write(e.ToString());
             }
             if (s == '*')
                 Console.ForegroundColor = ConsoleColor.Yellow;
+            if (s == '$')
+                Console.ForegroundColor = ConsoleColor.Green;
             Console.Write(s);
-            if (s == '*')
+            if (s == '*' || s == '$')
                 Console.ForegroundColor = ConsoleColor.Gray;
         }
 

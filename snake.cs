@@ -10,7 +10,7 @@ namespace consoleSnake
     class snake : figure
     {
         direction Direction;
-        private int score;
+        private static int score = 0;
 
         public snake(point pos, int length, direction dir)
         {
@@ -23,7 +23,6 @@ namespace consoleSnake
                 pList.Add(p);
             }
             Draw();
-            score = 0;
         }
 
         public void Move()
@@ -85,14 +84,17 @@ namespace consoleSnake
 
         public override void Draw()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
             base.Draw();
-            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public int GetScore()
         {
             return score;
+        }
+
+        public void ResetScore()
+        {
+            score = 0;
         }
     }
 }
