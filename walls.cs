@@ -46,6 +46,33 @@ namespace consoleSnake
                 else
                     wall9 = new line_horizontal(11, whidth - 12, height / 2 + 1, 1);
                 wallList.Add(wall9);
+                if (lvl == 4)
+                {
+                    line_vertical wall10 = new line_vertical(height / 2 - 2, height / 2 + 4, 7, 1);
+                    line_vertical wall11 = new line_vertical(height / 2 - 2, height / 2 + 4, whidth - 8, 1);
+                    line_horizontal wall12 = new line_horizontal(whidth / 2 - 5, whidth / 2 + 5, 5, 1);
+                    line_horizontal wall13 = new line_horizontal(whidth / 2 - 5, whidth / 2 + 5, height - 6, 1);
+                    wallList.Add(wall10);
+                    wallList.Add(wall11);
+                    wallList.Add(wall12);
+                    wallList.Add(wall13);
+                }
+            }
+
+            if (lvl == 5)
+            {
+                line_horizontal wall5 = new line_horizontal(2, whidth - 3, height / 2, 1);
+                line_vertical wall6 = new line_vertical(2, height - 3, whidth / 2, 1);
+                line_vertical wall7 = new line_vertical(1, height / 2 - 2, whidth / 4, 1);
+                line_vertical wall8 = new line_vertical(height / 2 + 2, height - 2, whidth / 4, 1);
+                line_vertical wall9 = new line_vertical(1, height / 2 - 2, whidth / 4 * 3, 1);
+                line_vertical wall10 = new line_vertical(height / 2 + 2, height - 2, whidth / 4 * 3, 1);
+                wallList.Add(wall5);
+                wallList.Add(wall6);
+                wallList.Add(wall7);
+                wallList.Add(wall8);
+                wallList.Add(wall9);
+                wallList.Add(wall10);
             }
             Draw();
         }
