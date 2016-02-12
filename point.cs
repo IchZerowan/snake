@@ -26,24 +26,36 @@ namespace consoleSnake
             s = p.s;
         }
 
+        public point(point p, int s)
+        {
+            x = p.x;
+            y = p.y;
+            SetChar(s);
+        }
+
         public void Draw()
         {
-            try {
+            try
+            {
                 Console.SetCursorPosition(x, y);
             }
             catch (ArgumentOutOfRangeException e)
             {
-                Console.SetCursorPosition(0,0);
+                Console.SetCursorPosition(0, 0);
                 Console.Write(e.ToString());
             }
             if (s == '*')
                 Console.ForegroundColor = ConsoleColor.Yellow;
+            if (s == '$')
+                Console.ForegroundColor = ConsoleColor.Green;
+            if (s == '#')
+                Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(s);
-            if (s == '*')
+            if (s == '*' || s == '$' || s == '#')
                 Console.ForegroundColor = ConsoleColor.Gray;
         }
 
-        public void move(int i, direction dir)
+        public void Move(int i, direction dir)
         {
             if (dir == direction.RIGHT)
                 x = x + i;
@@ -55,13 +67,13 @@ namespace consoleSnake
                 y = y - 1;
         }
 
-        public void clear()
+        public void Clear()
         {
             s = ' ';
             Draw();
         }
 
-        public bool isHit(point p)
+        public bool IsHit(point p)
         {
             return p.x == this.x && p.y == this.y;
         }
@@ -82,6 +94,8 @@ namespace consoleSnake
                 this.s = '*';
             if (Char == 4)
                 this.s = '=';
+            if (Char == 5)
+                this.s = '#';
         }
     }
 }

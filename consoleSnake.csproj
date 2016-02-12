@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>zmeja.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -43,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleHelper.cs" />
     <Compile Include="controls.cs" />
     <Compile Include="ctrl.cs" />
     <Compile Include="direction.cs" />
@@ -53,12 +57,16 @@
     <Compile Include="line_vertical.cs" />
     <Compile Include="point.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="portal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="snake.cs" />
     <Compile Include="walls.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="zmeja.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -18,21 +18,21 @@ namespace consoleSnake
             }
         }
 
-        public bool IsHeat(figure f)
+        public bool IsHit(figure f)
         {
             foreach (var p in pList)
             {
-                if (f.IsHeat(p))
+                if (f.IsHit(p))
                     return true;
             }
             return false;
         }
 
-        public bool IsHeat(point p)
+        public bool IsHit(point p)
         {
             foreach (var point in pList)
             {
-                if (p.isHit(point))
+                if (p.IsHit(point))
                     return true;
             }
             return false;

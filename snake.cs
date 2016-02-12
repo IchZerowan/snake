@@ -10,7 +10,7 @@ namespace consoleSnake
     class snake : figure
     {
         direction Direction;
-        private int score;
+        private static int score = 0;
 
         public snake(point pos, int length, direction dir)
         {
@@ -19,11 +19,10 @@ namespace consoleSnake
             for (int i = 0; i < length; i++)
             {
                 point p = new point(pos);
-                p.move(i, dir);
+                p.Move(i, dir);
                 pList.Add(p);
             }
             Draw();
-            score = 0;
         }
 
         public void Move()
@@ -32,17 +31,17 @@ namespace consoleSnake
             pList.Remove(tail);
             point head = NextPoint();
             pList.Add(head);
-            tail.clear();
+            tail.Clear();
             head.Draw();
             Draw();
         }
 
-        public bool IsHeatTail()
+        public bool IsHitTail()
         {
             var head = pList.Last();
             for (int i = 0; i<pList.Count-2; i++)
             {
-                if (head.isHit(pList[i]))
+                if (head.IsHit(pList[i]))
                     return true;
             }
             return false;
@@ -53,7 +52,7 @@ namespace consoleSnake
         {
             point head = pList.Last();
             point NextPoint = new point(head);
-            NextPoint.move(1, Direction);
+            NextPoint.Move(1, Direction);
             return NextPoint;
         }
 
@@ -69,10 +68,10 @@ namespace consoleSnake
                 Direction = direction.DOWN;
         }
 
-        public bool eat(point food)
+        public bool Eat(point food)
         {
             point head = NextPoint();
-            if (head.isHit(food))
+            if (head.IsHit(food))
             {
                 pList.Add(food);
                 food.ChangeChar(3);    
@@ -85,14 +84,32 @@ namespace consoleSnake
 
         public override void Draw()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
             base.Draw();
-            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public int GetScore()
         {
             return score;
+        }
+
+        public void ResetScore()
+        {
+            score = 0;
+        }
+
+        public void Teleport(point port)
+        {
+            var tail = pList.Last();
+            pList.Remove(tail);
+            tail.Clear();
+            var head = new point(port, 3);
+            head.Move(1, Direction);
+            pList.Add(head);
+        }
+
+        public point GetHead()
+        {
+            return new point(pList.Last());
         }
     }
 }

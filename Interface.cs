@@ -1,8 +1,10 @@
-﻿using System;
+﻿using ConsoleExtender;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace consoleSnake
 {
@@ -13,10 +15,13 @@ namespace consoleSnake
 
         static void Main(string[] args)
         {
-            Console.SetWindowSize(width, height);
-            Console.SetBufferSize(width, height);
+            int lvl = 0;
+            ConsoleHelper.SetConsoleFont(3);
+            Console.SetWindowSize(width, height + 5);
+            Console.SetBufferSize(width, height + 5);
             Console.Title = "Snake";
             Console.CursorVisible = false;
+
             bool CanClose;
 
             do
@@ -45,7 +50,14 @@ namespace consoleSnake
                 Console.Clear();
 
                 Game game = new Game(width, height, speed);
-                EndGameInfo(game.Start());
+                if (lvl == 0)
+                    EndGameInfo(game.Start());
+                else
+                {
+                    int a = game.Start(lvl);
+                    EndGameInfo(a);
+                    lvl = 0;
+                }
 
                 while (true)
                 {
@@ -62,6 +74,12 @@ namespace consoleSnake
                             CanClose = true;
                             break;
                         }
+                        else if ("123456789".Contains(key.KeyChar))
+                        {
+                            lvl = Convert.ToInt32(key.KeyChar) - 48;
+                            CanClose = false;
+                            break;
+                        }
                     }
                 }
             } while (!CanClose);
@@ -73,13 +91,15 @@ namespace consoleSnake
             Console.SetCursorPosition(34, 10);
             Console.Write("Игра окончена");
             Console.SetCursorPosition(30, 11);
-            Console.Write("Вы набрали " + score.ToString() +" очков");
+            Console.Write("Вы набрали " + score.ToString() + " очков");
             Console.SetCursorPosition(25, 12);
             Console.Write("Нажмите Space чтобы играть заново,");
             Console.SetCursorPosition(34, 13);
-            Console.Write("Esc для выхода");
+            Console.Write("Esc для выхода,");
+            Console.SetCursorPosition(28, 14);
+            Console.Write("или выберите уровень (1-9)");
             line_horizontal l1 = new line_horizontal(23, 59, 8, 4);
-            line_horizontal l2 = new line_horizontal(23, 59, 15, 4);
+            line_horizontal l2 = new line_horizontal(23, 59, 16, 4);
             Console.ForegroundColor = ConsoleColor.Green;
             l1.Draw();
             l2.Draw();
