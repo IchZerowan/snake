@@ -55,7 +55,7 @@ namespace consoleSnake
                 Console.ForegroundColor = ConsoleColor.Gray;
         }
 
-        public void move(int i, direction dir)
+        public void Move(int i, direction dir)
         {
             if (dir == direction.RIGHT)
                 x = x + i;
@@ -67,13 +67,13 @@ namespace consoleSnake
                 y = y - 1;
         }
 
-        public void clear()
+        public void Clear()
         {
             s = ' ';
             Draw();
         }
 
-        public bool isHit(point p)
+        public bool IsHit(point p)
         {
             return p.x == this.x && p.y == this.y;
         }

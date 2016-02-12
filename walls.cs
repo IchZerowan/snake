@@ -105,21 +105,21 @@ namespace consoleSnake
             Draw();
         }
 
-        public bool IsHeat(figure f)
+        public bool IsHit(figure f)
         {
             foreach (var wall in wallList)
             {
-                if (wall.IsHeat(f))
+                if (wall.IsHit(f))
                     return true;
             }
             return false;
         }
 
-        public bool IsHeat(point p)
+        public bool IsHit(point p)
         {
             foreach (var wall in wallList)
             {
-                if (wall.IsHeat(p))
+                if (wall.IsHit(p))
                     return true;
             }
             return false;

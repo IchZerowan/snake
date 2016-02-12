@@ -21,7 +21,7 @@ namespace consoleSnake
             this.s = s;
         }
 
-        public point next(snake Snake, walls wall)
+        public point Next(snake Snake, walls wall)
         {
             int x;
             int y;
@@ -31,7 +31,7 @@ namespace consoleSnake
                 x = rnd.Next(1, whidth - 1);
                 y = rnd.Next(1, height - 1);
                 p = new point(x, y, s);
-            } while (Snake.IsHeat(p) || wall.IsHeat(p));
+            } while (Snake.IsHit(p) || wall.IsHit(p));
             return p;
         }
     }

@@ -19,11 +19,11 @@ namespace consoleSnake
             Draw();
         }
 
-        public point isHeat(point head)
+        public new point IsHit(point head)
         {
-            if (head.isHit(pList.First()))
+            if (head.IsHit(pList.First()))
                 return pList.First();
-            if (head.isHit(pList.Last()))
+            if (head.IsHit(pList.Last()))
                 return pList.Last();
             return null;
         }
