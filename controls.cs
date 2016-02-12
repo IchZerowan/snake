@@ -2,12 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace consoleSnake
 {
     class controls
     {
+        int width;
+        int height;
+
+        public controls(int width, int height)
+        {
+            this.width = width;
+            this.height = height;
+        }
+
         public ctrl GetCtrl()
         {
             if (Console.KeyAvailable)
@@ -32,6 +42,27 @@ namespace consoleSnake
             }
             else
                 return ctrl.nil;
+        }
+
+        public void StartInfo(int lvl)
+        {
+            Console.Clear();
+            Console.SetCursorPosition(width / 2 - 5, height / 2);
+            Console.Write("Уровень " + lvl.ToString());
+            Thread.Sleep(1000);
+            Console.Clear();
+            Console.SetCursorPosition(3, height + 2);
+            Console.Write("Счет:");
+            Console.SetCursorPosition(10, height + 2);
+            Console.Write("Уровень:");
+            Console.SetCursorPosition(13, height + 3);
+            Console.Write(lvl);
+        }
+
+        public void ShowScore(int Score)
+        {
+            Console.SetCursorPosition(5, height + 3);
+            Console.Write(Score);
         }
     }
 }
