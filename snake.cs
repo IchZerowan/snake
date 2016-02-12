@@ -96,5 +96,20 @@ namespace consoleSnake
         {
             score = 0;
         }
+
+        public void teleport(point port)
+        {
+            var tail = pList.Last();
+            pList.Remove(tail);
+            tail.clear();
+            var head = new point(port, 3);
+            head.move(1, Direction);
+            pList.Add(head);
+        }
+
+        public point GetHead()
+        {
+            return new point(pList.Last());
+        }
     }
 }

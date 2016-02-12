@@ -26,6 +26,13 @@ namespace consoleSnake
             s = p.s;
         }
 
+        public point(point p, int s)
+        {
+            x = p.x;
+            y = p.y;
+            SetChar(s);
+        }
+
         public void Draw()
         {
             try
@@ -41,8 +48,10 @@ namespace consoleSnake
                 Console.ForegroundColor = ConsoleColor.Yellow;
             if (s == '$')
                 Console.ForegroundColor = ConsoleColor.Green;
+            if (s == '#')
+                Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(s);
-            if (s == '*' || s == '$')
+            if (s == '*' || s == '$' || s == '#')
                 Console.ForegroundColor = ConsoleColor.Gray;
         }
 
@@ -85,6 +94,8 @@ namespace consoleSnake
                 this.s = '*';
             if (Char == 4)
                 this.s = '=';
+            if (Char == 5)
+                this.s = '#';
         }
     }
 }

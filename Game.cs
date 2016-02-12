@@ -43,6 +43,7 @@ namespace consoleSnake
             while (true)
             {
                 wall.Draw();
+                food.Draw();
 
                 if (Snake.GetScore() == 10 * lvl)
                     return true;
@@ -52,6 +53,15 @@ namespace consoleSnake
                     return false;
                 }
 
+                if (wall.Portal != null)
+                {
+                    point p = wall.Portal.isHeat(Snake.GetHead());
+                    if (p != null)
+                    {
+                        Snake.teleport(wall.Portal.OtherPoint(p));
+                    }
+                }
+
                 if (Snake.eat(food))
                 {
                     Console.SetCursorPosition(5, height + 3);
@@ -59,6 +69,7 @@ namespace consoleSnake
                     food = fp.next(Snake, wall);
                     food.Draw();
                 }
+
                 else
                 {
                     Snake.Move();
@@ -92,7 +103,7 @@ namespace consoleSnake
 
         public int Start()
         {
-            for (int i = 1; i <= 5; i++)
+            for (int i = 1; i <= 7; i++)
             {
                 Console.Clear();
                 Console.SetCursorPosition(width / 2 - 5, height / 2);

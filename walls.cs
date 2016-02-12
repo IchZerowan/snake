@@ -9,6 +9,7 @@ namespace consoleSnake
     class walls
     {
         List<figure> wallList;
+        public portal Portal;
 
         public walls(int whidth, int height, int lvl)
         {
@@ -74,6 +75,33 @@ namespace consoleSnake
                 wallList.Add(wall9);
                 wallList.Add(wall10);
             }
+
+            if (lvl == 6 || lvl == 7)
+            {
+                line_vertical wall5 = new line_vertical(1, height - 2, whidth / 2, 1);
+                wallList.Add(wall5);
+                Portal = new portal(5, height / 2, whidth - 6, height / 2);
+            }
+
+            if (lvl == 7)
+            {
+                line_vertical wall6 = new line_vertical(1, height / 2 - 1, 10, 1);
+                line_vertical wall7 = new line_vertical(height / 2 + 3, height - 1, 10, 1);
+                line_vertical wall8 = new line_vertical(1, height / 2 - 1, whidth - 11, 1);
+                line_vertical wall9 = new line_vertical(height / 2 + 3, height - 1, whidth - 11, 1);
+                line_horizontal wall12 = new line_horizontal(12, whidth - 13, height / 2 + 1, 1);
+                line_vertical wall10 = new line_vertical(height / 2 - 2, height / 2 + 4, 7, 1);
+                line_vertical wall11 = new line_vertical(height / 2 - 2, height / 2 + 4, whidth - 8, 1);
+
+                wallList.Add(wall9);
+                wallList.Add(wall6);
+                wallList.Add(wall7);
+                wallList.Add(wall8);
+                wallList.Add(wall10);
+                wallList.Add(wall11);
+                wallList.Add(wall12);
+            }
+
             Draw();
         }
 
@@ -103,6 +131,8 @@ namespace consoleSnake
             {
                 wall.Draw();
             }
+            if (Portal != null)
+                Portal.Draw();
         }
     }
 }
