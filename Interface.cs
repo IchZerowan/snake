@@ -17,6 +17,7 @@ namespace consoleSnake
         {
             int lvl = 0;
             ConsoleHelper.SetConsoleFont(3);
+            ConsoleHelper.SetConsoleIcon(new Icon("zmeja.ico"));
             Console.SetWindowSize(width, height + 5);
             Console.SetBufferSize(width, height + 5);
             Console.Title = "Snake";
