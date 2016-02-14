@@ -46,7 +46,7 @@ namespace consoleSnake
                 wall.Draw();
                 food.Draw();
 
-                if (Snake.GetScore() == 10 * lvl)
+                if (Snake.Score == 10 * lvl)
                     return true;
 
                 if (wall.IsHit(Snake) || Snake.IsHitTail())
@@ -66,7 +66,7 @@ namespace consoleSnake
                 if (Snake.Eat(food))
                 {
                     Console.SetCursorPosition(5, height + 3);
-                    Console.Write(Snake.GetScore() * speed);
+                    Console.Write(Snake.Score * speed);
                     food = fp.Next(Snake, wall);
                     food.Draw();
                 }
@@ -111,7 +111,7 @@ namespace consoleSnake
                 if (!Play(i))
                     break;
             }
-            int sc = Snake.GetScore() * speed;
+            int sc = Snake.Score * speed;
             Snake.ResetScore();
             return sc;
         }
@@ -121,7 +121,7 @@ namespace consoleSnake
             Ctrl.StartInfo(lvl);
             Initialize(lvl);
             Play(1);
-            int sc = Snake.GetScore() * speed;
+            int sc = Snake.Score * speed;
             Snake.ResetScore();
             return sc;
         }
@@ -131,7 +131,7 @@ namespace consoleSnake
         void Initialize(int lvl)
         {
             Snake = new snake(pos, 4, direction.RIGHT);
-            Ctrl.ShowScore(Snake.GetScore() * speed);
+            Ctrl.ShowScore(Snake.Score * speed);
             wall = new walls(width, height, lvl);
             fp = new foodpoint(width, height, 2);
             food = fp.Next(Snake, wall);

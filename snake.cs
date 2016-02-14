@@ -10,7 +10,15 @@ namespace consoleSnake
     class snake : figure
     {
         direction Direction;
+
         private static int score = 0;
+        public int Score
+        {
+            get
+            {
+                return score;
+            }
+        }
 
         public snake(point pos, int length, direction dir)
         {
@@ -85,11 +93,6 @@ namespace consoleSnake
         public override void Draw()
         {
             base.Draw();
-        }
-
-        public int GetScore()
-        {
-            return score;
         }
 
         public void ResetScore()

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Threading;
 
 namespace consoleSnake
 {
@@ -23,12 +24,31 @@ namespace consoleSnake
             Console.Title = "Snake";
             Console.CursorVisible = false;
 
-            bool CanClose;
-
             do
             {
                 int speed = 0;
                 Console.Clear();
+                ChooseParams();
+                while (true)
+                {
+                    if (Console.KeyAvailable)
+                    {
+                        ConsoleKeyInfo key = Console.ReadKey();
+                        if (key.Key == ConsoleKey.Spacebar)
+                        {
+                            break;
+                        }
+                        else if (key.Key == ConsoleKey.Escape)
+                        {
+                            return;
+                        }
+                        else if ("123456789".Contains(key.KeyChar))
+                        {
+                            lvl = Convert.ToInt32(key.KeyChar) - 48;
+                            break;
+                        }
+                    }
+                }
                 StartGameHint();
                 while (speed == 0)
                 {
@@ -48,8 +68,6 @@ namespace consoleSnake
                     }
                 }
 
-                Console.Clear();
-
                 Game game = new Game(width, height, speed);
                 if (lvl == 0)
                     EndGameInfo(game.Start());
@@ -59,31 +77,7 @@ namespace consoleSnake
                     EndGameInfo(a);
                     lvl = 0;
                 }
-
-                while (true)
-                {
-                    if (Console.KeyAvailable)
-                    {
-                        ConsoleKeyInfo key = Console.ReadKey();
-                        if (key.Key == ConsoleKey.Spacebar)
-                        {
-                            CanClose = false;
-                            break;
-                        }
-                        else if (key.Key == ConsoleKey.Escape)
-                        {
-                            CanClose = true;
-                            break;
-                        }
-                        else if ("123456789".Contains(key.KeyChar))
-                        {
-                            lvl = Convert.ToInt32(key.KeyChar) - 48;
-                            CanClose = false;
-                            break;
-                        }
-                    }
-                }
-            } while (!CanClose);
+            } while (true);
         }
 
         static void EndGameInfo(int score)
@@ -93,23 +87,33 @@ namespace consoleSnake
             Console.Write("Игра окончена");
             Console.SetCursorPosition(30, 11);
             Console.Write("Вы набрали " + score.ToString() + " очков");
-            Console.SetCursorPosition(25, 12);
-            Console.Write("Нажмите Space чтобы играть заново,");
-            Console.SetCursorPosition(34, 13);
-            Console.Write("Esc для выхода,");
-            Console.SetCursorPosition(28, 14);
-            Console.Write("или выберите уровень (1-9)");
             line_horizontal l1 = new line_horizontal(23, 59, 8, 4);
-            line_horizontal l2 = new line_horizontal(23, 59, 16, 4);
+            line_horizontal l2 = new line_horizontal(23, 59, 13, 4);
             Console.ForegroundColor = ConsoleColor.Green;
             l1.Draw();
             l2.Draw();
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.Beep();
+            Thread.Sleep(1000);
+        }
+
+        static void ChooseParams()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            line_horizontal l1 = new line_horizontal(23, 59, 8, 4);
+            l1.Draw();
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.SetCursorPosition(28, 10);
+            Console.Write("Нажмите Space чтобы играть,");
+            Console.SetCursorPosition(34, 11);
+            Console.Write("Esc для выхода,");
+            Console.SetCursorPosition(28, 12);
+            Console.Write("или выберите уровень (1-9)");
         }
 
         static void StartGameHint()
         {
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
             line_horizontal l1 = new line_horizontal(23, 59, 8, 4);
             l1.Draw();
