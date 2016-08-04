@@ -81,7 +81,6 @@ namespace consoleSnake
         public void ChangeChar(int NewChar)
         {
             SetChar(NewChar);
-            Draw();
         }
 
         void SetChar(int Char)

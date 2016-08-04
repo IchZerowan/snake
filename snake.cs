@@ -82,7 +82,8 @@ namespace consoleSnake
             if (head.IsHit(food))
             {
                 pList.Add(food);
-                food.ChangeChar(3);    
+                food.ChangeChar(3);
+                food.Draw();    
                 score++;
                 return true;
             }

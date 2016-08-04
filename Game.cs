@@ -20,6 +20,8 @@ namespace consoleSnake
         point food;
         controls Ctrl;
 
+        point head;
+
         public Game(int width, int height, int speed)
         {
             this.width = width;
@@ -43,7 +45,6 @@ namespace consoleSnake
         {
             while (true)
             {
-                wall.Draw();
                 food.Draw();
 
                 if (Snake.Score == 10 * lvl)
@@ -98,7 +99,13 @@ namespace consoleSnake
                     food.Draw();
                 }
                 else
+                {
                     Snake.HandleSnake(CtrlRes);
+                    head = Snake.GetHead();
+                    head.Move(1, direction.RIGHT);
+                    head.ChangeChar(1);
+                    wall.reDraw(head);
+                }
             }
         }
 
@@ -136,6 +143,7 @@ namespace consoleSnake
             fp = new foodpoint(width, height, 2);
             food = fp.Next(Snake, wall);
             food.Draw();
+            wall.Draw();
         }
     }
 }

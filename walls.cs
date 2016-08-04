@@ -103,5 +103,13 @@ namespace consoleSnake
             if (Portal != null)
                 Portal.Draw();
         }
+
+        public void reDraw(point p)
+        {
+            if(IsHit(p))
+            {
+                p.Draw();
+            }
+        }
     }
 }
